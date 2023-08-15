@@ -1,22 +1,19 @@
-
-
+const dotenv = require('dotenv');
 const express = require('express');
-const routes = require('./routes')
+const routes = require('./routes');
 const app = express();
-const cors= require('cors');
-require('dotenv').config()
+const cors = require('cors');
+
+dotenv.config();
 
 require('./config/dbConfig');
-
 
 app.use(cors());
 app.use(express.json());
 
 app.use(routes);
 
-app.set('view engine', 'pug')
-
-const port = process.env.PORT || 3333
+const port = process.env.PORT || 3333;
 app.listen(port, () => {
-	console.log(`Servidor rodando na porta ${port}`)
-})
+	console.log(`Servidor rodando na porta ${port}`);
+});
